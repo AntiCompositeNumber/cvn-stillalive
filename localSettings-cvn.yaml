@@ -18,6 +18,22 @@ templates:
     cmd: "mono {cvn}/services/cvnbot/{name}/CVNBot.exe > /dev/null 2>&1"
     match: "mono {cvn}/services/cvnbot/{name}/CVNBot.exe"
     pool: "cvn-app9"
+  CVNBot_v4@cvn-app10:
+    cwd: "{cvn}/services/cvnbot/{name}"
+    cmd: "mono {cvn}/services/cvnbot/{name}/CVNBot.exe > /dev/null 2>&1"
+    match: "mono {cvn}/services/cvnbot/{name}/CVNBot.exe"
+    pool: "cvn-app10"
+  CVNBot_v4@cvn-app12:
+    cwd: "{cvn}/services/cvnbot/{name}"
+    cmd: "mono {cvn}/services/cvnbot/{name}/CVNBot.exe > /dev/null 2>&1"
+    match: "mono {cvn}/services/cvnbot/{name}/CVNBot.exe"
+    pool: "cvn-app12"
+  generic@cvn-app12:
+    cwd: "{cvn}/services/cvnbot/{name}"
+    cmd: "mono {cvn}/services/cvnbot/{name}/CVNBot.exe > /dev/null 2>&1"
+    match: "mono {cvn}/services/cvnbot/{name}/CVNBot.exe"
+    pool: "cvn-app12"
+
 template-tasks:
     # https://meta.wikimedia.org/wiki/Countervandalism_Network/Bots
     #
@@ -64,3 +80,47 @@ template-tasks:
       - { "name": "CVNBot27" } # #cvn-wp-hr (Light)
       - { "name": "CVNBot28" } # #cvn-wp-fr (Medium)
       - { "name": "CVNBot29" } # #cvn-es-scan (Medium)
+    #
+    # Server: cvn-app10 (CPU: 4x, Memory: 8GB RAM)
+    # Load: 1 Super Heavy, 2 Heavy, 4 Medium
+    #
+    "CVNBot_v4@cvn-app10":
+      #- { "name": "CVNBot1" } # #cvn-wp-en (Heavy)
+      #- { "name": "CVNBot2" } # #cvn-wp-ru (Medium)
+      #- { "name": "CVNBot3" } # #cvn-wp-es (Heavy)
+      #- { "name": "CVNBot4" } # #cvn-it-scan (Medium)
+      #- { "name": "CVNBot5" } # #cvn-meta (Light)
+      #- { "name": "CVNBot11" } # #cvn-commons-uploads (Medium)
+      #- { "name": "CVNBot12" } # #cvn-wp-nl (Medium)
+      #- { "name": "CVNBot13" } # #cvn-wp-da (Light)
+      ## Beware: CVNBot14 is pinned to cvn-app10 for cvndb-publish.cron (see countervandalism/infrastructure.git:setup.yaml)
+      #- { "name": "CVNBot14" } # #cvn-commons (Heavy)
+      #- { "name": "CVNBot15" } # #cvn-simplewikis (Light)
+      #- { "name": "CVNBot18" } # #cvn-wikidata (Super Heavy)
+      #- { "name": "CVNBot20" } # #cvn-bn-scan (Light)
+      #- { "name": "CVNBot21" } # #cvn-mediawiki (Light)
+    #
+    # Server: cvn-app12 (CPU: 4x, Memory: 8GB RAM)
+    #
+    "generic@cvn-app12":
+      #-
+      # cmd: "python3 {cvn}/git/CVNClerkBot/cvnclerkbot.py > {cvn}/log/cvnclerkbot.log 2>&1"
+      # match: "python3 {cvn}/git/CVNClerkBot/cvnclerkbot.py"
+      # user: false
+    "CVNBot_v4@cvn-app12":
+      #- { "name": "CVNBot6" } # #cvn-sw (SWMT group 1; Heavy)
+      #- { "name": "CVNBot7" } # #cvn-sw (SWMT group 2; Medium)
+      #- { "name": "CVNBot8" } # #cvn-sw (SWMT group 3; Heavy)
+      #- { "name": "CVNBot9" } # #cvn-sw (SWMT group 4; Light)
+      #- { "name": "CVNBot10" } # #cvn-sw (SWMT group 5; Light)
+      #- { "name": "CVNBot16" } # #cvn-ja (Medium)
+      #- { "name": "CVNBot17" } # #cvn-wikivoyage (Light)
+      #- { "name": "CVNBot19" } # #cvn-sw (SWMT group 6; Light)
+      #- { "name": "CVNBot22" } # #cvn-mk-scan (Light)
+      #- { "name": "CVNBot23" } # #cvn-zh-scan (Light)
+      #- { "name": "CVNBot24" } # #cvn-wp-he (Light)
+      #- { "name": "CVNBot25" } # #cvn-ko-scan (Medium)
+      #- { "name": "CVNBot26" } # #cvn-ar-scan (Medium)
+      #- { "name": "CVNBot27" } # #cvn-wp-hr (Light)
+      #- { "name": "CVNBot28" } # #cvn-wp-fr (Medium)
+      #- { "name": "CVNBot29" } # #cvn-es-scan (Medium)
