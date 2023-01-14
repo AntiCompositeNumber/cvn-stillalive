@@ -13,11 +13,6 @@ templates:
     cmd: "mono {cvn}/services/cvnbot/{name}/CVNBot.exe > /dev/null 2>&1"
     match: "mono {cvn}/services/cvnbot/{name}/CVNBot.exe"
     pool: "cvn-app9"
-  generic@cvn-app9:
-    cwd: "{cvn}/services/cvnbot/{name}"
-    cmd: "mono {cvn}/services/cvnbot/{name}/CVNBot.exe > /dev/null 2>&1"
-    match: "mono {cvn}/services/cvnbot/{name}/CVNBot.exe"
-    pool: "cvn-app9"
   CVNBot_v4@cvn-app10:
     cwd: "{cvn}/services/cvnbot/{name}"
     cmd: "mono {cvn}/services/cvnbot/{name}/CVNBot.exe > /dev/null 2>&1"
@@ -58,11 +53,6 @@ template-tasks:
     #
     # Server: cvn-app9 (CPU: 4x, Memory: 8GB RAM)
     #
-    "generic@cvn-app9":
-      -
-       cmd: "python {cvn}/git/CVNClerkBot/cvnclerkbot.py > {cvn}/log/cvnclerkbot.log 2>&1"
-       match: "python {cvn}/git/CVNClerkBot/cvnclerkbot.py"
-       user: false
     "CVNBot_v4@cvn-app9":
       - { "name": "CVNBot6" } # #cvn-sw (SWMT group 1; Heavy)
       - { "name": "CVNBot7" } # #cvn-sw (SWMT group 2; Medium)
@@ -103,10 +93,10 @@ template-tasks:
     # Server: cvn-app12 (CPU: 4x, Memory: 8GB RAM)
     #
     "generic@cvn-app12":
-      #-
-      # cmd: "python3 {cvn}/git/CVNClerkBot/cvnclerkbot.py > {cvn}/log/cvnclerkbot.log 2>&1"
-      # match: "python3 {cvn}/git/CVNClerkBot/cvnclerkbot.py"
-      # user: false
+      -
+       cmd: "python3 {cvn}/git/CVNClerkBot/cvnclerkbot.py > {cvn}/log/cvnclerkbot.log 2>&1"
+       match: "python3 {cvn}/git/CVNClerkBot/cvnclerkbot.py"
+       user: false
     "CVNBot_v4@cvn-app12":
       #- { "name": "CVNBot6" } # #cvn-sw (SWMT group 1; Heavy)
       #- { "name": "CVNBot7" } # #cvn-sw (SWMT group 2; Medium)
